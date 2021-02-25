@@ -5,6 +5,7 @@ import ProfileComponent from '../components/ProfileComponent';
 import CompletedChallengesComponent from '../components/CompletedChallengesComponent';
 import CountdownComponent from '../components/CountdownComponent';
 import ChallengeBoxComponent from '../components/ChallengeBoxComponent';
+import { CountdownProvider } from '../contexts/CountdownContext';
 
 import { Container } from '../styles/pages/Home/styles';
 
@@ -16,17 +17,19 @@ const HomePage = () => (
 
     <ExperienceBarComponent />
 
-    <section>
-      <div>
-        <ProfileComponent />
-        <CompletedChallengesComponent />
-        <CountdownComponent />
-      </div>
+    <CountdownProvider>
+      <section>
+        <div>
+          <ProfileComponent />
+          <CompletedChallengesComponent />
+          <CountdownComponent />
+        </div>
 
-      <div>
-        <ChallengeBoxComponent />
-      </div>
-    </section>
+        <div>
+          <ChallengeBoxComponent />
+        </div>
+      </section>
+    </CountdownProvider>
   </Container>
 );
 
