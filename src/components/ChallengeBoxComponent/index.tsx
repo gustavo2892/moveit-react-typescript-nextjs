@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { ChallengesContext } from '../../contexts/ChallengesContext';
 import { CountdownContext } from '../../contexts/CountdownContext';
-
+import { LayoutContext } from '../../contexts/LayoutContext';
 
 import {
   Container,
@@ -16,6 +16,8 @@ const ChallengeBoxComponent = () => {
 
   const { resetCountdown } = useContext(CountdownContext);
 
+  const { isDarkTheme } = useContext(LayoutContext);
+
   function handleChallengeSucceeded() {
     completeChallenge();
     resetCountdown();
@@ -27,7 +29,7 @@ const ChallengeBoxComponent = () => {
   }
 
   return (
-    <Container>
+    <Container isDarkTheme={isDarkTheme}>
       {activeChallenge ? (
         <ChallengeActive>
           <header>Ganhe {activeChallenge.amount} XP</header>

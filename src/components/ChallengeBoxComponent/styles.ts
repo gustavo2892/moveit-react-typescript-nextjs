@@ -4,7 +4,11 @@ interface ChallengeButtonProps {
   result: 'failed' | 'succeeded';
 }
 
-export const Container = styled.div`
+interface ContainerProps {
+  isDarkTheme: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +17,11 @@ export const Container = styled.div`
   height: 100%;
   text-align: center;
   background: ${({ theme }) => theme.colors.backgroundLight};
+  ${props =>
+    !props.isDarkTheme &&
+    css`
+      background: ${({ theme }) => theme.colors.white};
+    `}
   border-radius: 5px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 `;

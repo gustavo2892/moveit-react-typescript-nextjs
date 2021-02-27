@@ -1,15 +1,25 @@
 import styled, { css } from 'styled-components';
 
+interface StyleProps {
+  isDarkTheme: boolean;
+}
 interface CountdownButtonProps {
   active: boolean;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<StyleProps>`
   display: flex;
   align-items: center;
   font-family: Rajdhani;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.title};
+
+  ${props =>
+    !props.isDarkTheme &&
+    css`
+      color: ${({ theme }) => theme.colors.titleThemeLight};
+    `}
+
   > div {
     flex: 1;
     display: flex;
@@ -18,15 +28,34 @@ export const Container = styled.div`
     font-size: 8.5rem;
     text-align: center;
     background: ${({ theme }) => theme.colors.backgroundLight};
+
+    ${props =>
+    !props.isDarkTheme &&
+    css`
+      background: ${({ theme }) => theme.colors.white};
+    `}
+
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     span {
       flex: 1;
       &:first-child {
         border-right: 1px solid ${({ theme }) => theme.colors.background};
+
+        ${props =>
+        !props.isDarkTheme &&
+        css`
+          border-right: 1px solid ${({ theme }) => theme.colors.backgroundThemeLight};
+        `}
       }
       &:last-child {
         border-left: 1px solid ${({ theme }) => theme.colors.background};
+
+        ${props =>
+        !props.isDarkTheme &&
+        css`
+          border-right: 1px solid ${({ theme }) => theme.colors.backgroundThemeLight};
+        `}
       }
     }
   }
@@ -36,7 +65,7 @@ export const Container = styled.div`
   }
 `;
 
-export const CountdownButton = styled.button`
+export const CountdownButton = styled.button<StyleProps>`
   ${({ theme }) => css<CountdownButtonProps>`
     display: flex;
     align-items: center;
@@ -48,6 +77,14 @@ export const CountdownButton = styled.button`
     font-weight: 600;
     color: ${theme.colors.text};
     background: ${theme.colors.purple};
+
+    ${props =>
+      !props.isDarkTheme &&
+      css`
+        background: ${theme.colors.blue};
+        color: ${theme.colors.white};
+      `}
+    
     border: none;
     border-radius: 5px;
     transition: background-color 0.2s;
@@ -56,10 +93,23 @@ export const CountdownButton = styled.button`
     }
     &:not(:disabled):hover {
       background: ${theme.colors.purpleDark};
+      
+      ${props =>
+        !props.isDarkTheme &&
+        css`
+          background: ${theme.colors.blueDark};
+        `}
     }
     &:disabled {
       background: ${theme.colors.backgroundLight};
       border-bottom: 4px solid ${theme.colors.green};
+
+      ${props =>
+      !props.isDarkTheme &&
+      css`
+        border-bottom: 4px solid ${theme.colors.blueDark};
+      `}
+
       cursor: not-allowed;
     }
     ${(props) =>

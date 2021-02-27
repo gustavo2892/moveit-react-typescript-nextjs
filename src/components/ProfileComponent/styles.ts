@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  isDarkTheme: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   > img {
@@ -14,6 +18,11 @@ export const Container = styled.div`
       font-size: 1.5rem;
       font-weight: 600;
       color: ${({ theme }) => theme.colors.title};
+      ${props =>
+      !props.isDarkTheme &&
+      css`
+        color: ${({ theme }) => theme.colors.titleThemeLight};
+      `}
     }
     p {
       margin-top: 0.5rem;

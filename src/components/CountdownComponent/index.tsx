@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import { CountdownContext } from '../../contexts/CountdownContext';
+import { LayoutContext } from '../../contexts/LayoutContext';
 import { Container, CountdownButton } from './styles';
 
 const CountdownComponent = () => {
@@ -13,12 +14,14 @@ const CountdownComponent = () => {
     resetCountdown,
   } = useContext(CountdownContext);
 
+  const { isDarkTheme } = useContext(LayoutContext);
+
   const [minutesLeft, minutesRight] = `0${minutes}`.slice(-2).split('');
   const [secondsLeft, secondsRight] = `0${seconds}`.slice(-2).split('');
 
   return (
     <>
-      <Container>
+      <Container isDarkTheme={isDarkTheme}>
         <div>
           <span>{minutesLeft}</span>
           <span>{minutesRight}</span>

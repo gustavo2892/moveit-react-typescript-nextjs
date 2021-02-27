@@ -16,10 +16,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-  body {
-    color: ${({ theme }) => theme.colors.text};
-    background: ${({ theme }) => theme.colors.background};
-  }
+
   body,
   input,
   textarea,
