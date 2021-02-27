@@ -24,3 +24,7 @@ Aplicação desenvolvida durante a NLW#4 da Rocketseat, utilizando as tecnologia
 3. Navegue até o diretório da aplicação `cd pasta-da-aplicação`.
 4. Rode `yarn` ou `npm i` para instalar todas as dependências.<br />
 5. Rode `yarn dev` ou `npm run dev` e abra seu navegador utilizando a url `http://localhost:3000`.
+
+## Produção
+
+Para Acessar a aplicação que está em produção acesse a url `https://moveit-theme-dark-light.vercel.app/`.
